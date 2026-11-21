@@ -12,6 +12,15 @@ MySQL local: `127.0.0.1:3308`, base exclusiva `school_tutoring`. Credenciales ú
 
 Instala PHP 8.5 con las extensiones requeridas por Composer, Composer, Node.js compatible con Vite 8 y MySQL. Los ejecutables locales, las dependencias instaladas, los documentos de tesis y los datos de la aplicación no se incluyen en el repositorio.
 
+Descarga el código y entra en la carpeta del proyecto:
+
+```powershell
+git clone https://github.com/Jean1A/Gestion-tutorial_Mariscalito.git
+Set-Location Gestion-tutorial_Mariscalito
+```
+
+Instala las dependencias y crea tu configuración local. Ejecuta la copia de `.env.example` únicamente en una instalación nueva:
+
 ```powershell
 composer install
 Copy-Item .env.example .env
@@ -30,6 +39,14 @@ php artisan db:seed --class=PortalPermissionSeeder
 ```
 
 Los usuarios y sus contraseñas se administran en cada instalación. El repositorio no incluye cuentas de acceso de la base local.
+
+## Archivos incluidos y excluidos
+
+Se versionan el código fuente, las migraciones y seeders, las pruebas, las plantillas Excel de `resources/formats`, los recursos de interfaz y los archivos de dependencias `composer.lock` y `package-lock.json`.
+
+`.gitignore` excluye la configuración `.env`, las credenciales de Composer, las claves privadas, las bases y exportaciones locales, el contenido de `storage`, las dependencias `vendor` y `node_modules`, la compilación `public/build`, los ejecutables de `.runtime` y `.bootstrap`, y los documentos de trabajo de `docs`. En `storage` se conservan únicamente los archivos `.gitignore` que mantienen su estructura.
+
+Los archivos excluidos permanecen en la instalación local. Al clonar, las dependencias se reinstalan, la interfaz se compila y el esquema de la base de datos se crea mediante las migraciones.
 
 ## Ejecutar en desarrollo
 
