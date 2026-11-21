@@ -1,0 +1,9 @@
+@extends(auth()->user()->activeRole()===\App\Enums\RoleName::Guardian ? 'layouts.guardian':'layouts.app')
+@section('title',$recipient->communication->title)
+@section('content')
+<x-back-link :href="route('communications.index')">Volver a comunicaciones</x-back-link>
+<div class="card"><div class="card-body"><h1 class="h3">{{ $recipient->communication->title }}</h1><p>{{ $recipient->student->full_name }}</p><p style="white-space:pre-line">{{ $recipient->communication->body }}</p>@if($recipient->communication->scheduled_at)<p><strong>{{ $recipient->communication->scheduled_at->format('d/m/Y H:i') }}</strong> · {{ $recipient->communication->location }}</p>@endif
+@unless($recipient->read_at)<form method="post" action="{{ route('communications.read',$recipient) }}">@csrf<button class="btn btn-outline-primary">Confirmar lectura</button></form>@else<p>Lectura confirmada: {{ $recipient->read_at->format('d/m/Y H:i') }}</p>@endunless
+@if($recipient->communication->type==='appointment')<hr><form method="post" action="{{ route('communications.respond',$recipient) }}">@csrf<label for="response" class="form-label">Respuesta</label><select id="response" name="response" class="form-select mb-3"><option value="confirmed">Confirmo mi asistencia</option><option value="reschedule_requested">Solicito reprogramación</option></select><label for="response_note" class="form-label">Propuesta / motivo de reprogramación</label><textarea id="response_note" name="response_note" class="form-control mb-3" maxlength="500">{{ old('response_note',$recipient->response_note) }}</textarea><button class="btn btn-primary">Guardar respuesta</button></form><p class="mt-3">Estado: {{ ['pending'=>'Pendiente','confirmed'=>'Asistencia confirmada','reschedule_requested'=>'Reprogramación solicitada'][$recipient->response] }}</p>@endif
+</div></div>
+@endsection

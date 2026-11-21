@@ -1,0 +1,128 @@
+.notification-feed,
+.notification-preferences {
+    max-width: 52rem;
+}
+
+.notification-list {
+    display: grid;
+    gap: .85rem;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    list-style: none;
+}
+
+.notification-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: .65rem;
+}
+
+.notification-avatar {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border: 1px solid #efd2d8;
+    border-radius: 50%;
+    background: #fce3e8;
+    color: #8b3346;
+    font-size: 1rem;
+}
+
+.notification-bubble {
+    padding: .85rem 1.05rem;
+    border: 1px solid #efdadf;
+    border-radius: 6px 18px 18px;
+    background: #fff7f8;
+    overflow-wrap: anywhere;
+}
+
+.notification-item--unread .notification-bubble {
+    border-color: #edc0ca;
+    background: #ffe9ed;
+}
+
+.notification-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem .7rem;
+    margin-bottom: .4rem;
+    color: #714955;
+    font-size: .8rem;
+}
+
+.notification-state {
+    display: inline-flex;
+    align-items: center;
+    padding: .2rem .5rem;
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 700;
+}
+
+.notification-item--unread .notification-state {
+    background: #f8cfd7;
+    color: #792c3e;
+}
+
+.notification-bubble h2 {
+    margin-bottom: .3rem;
+    color: #462b39;
+    font-size: 1.05rem;
+    letter-spacing: normal;
+}
+
+.notification-bubble p {
+    margin-bottom: .75rem;
+    color: #543845;
+    font-size: .9375rem;
+    white-space: pre-line;
+}
+
+.notification-bubble .portal-action {
+    --action-bg: #fffbfc;
+    --action-border: #e9c1ca;
+    --action-color: #792c3e;
+    --action-hover: #fce0e6;
+    --action-hover-border: #d792a1;
+}
+
+.notification-empty {
+    padding: 1.25rem;
+    border: 1px solid #efdadf;
+    border-radius: 18px;
+    background: #fff7f8;
+}
+
+.notification-empty h2 {
+    margin: 0 0 .25rem;
+    font-size: 1.05rem;
+    letter-spacing: normal;
+}
+
+.notification-empty p {
+    margin: 0;
+    color: #714955;
+}
+
+.notification-dot {
+    background: #d56b84;
+}
+
+@media (max-width: 575px) {
+    .notification-item {
+        gap: .45rem;
+    }
+
+    .notification-avatar {
+        width: 1.85rem;
+        height: 1.85rem;
+        font-size: .875rem;
+    }
+
+    .notification-bubble {
+        padding: .75rem;
+    }
+}

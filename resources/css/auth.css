@@ -1,0 +1,220 @@
+.welcome-body {
+    min-height: 100svh;
+    background: #f1f5f9;
+    color: var(--portal-navy);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.welcome-main {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem 1.5rem;
+}
+
+.auth-panel {
+    width: min(100%, var(--auth-width, 29rem));
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid #dbe5ee;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 28px #1837520a;
+}
+
+.auth-panel--children,
+.auth-panel--profiles {
+    --auth-width: 49rem;
+}
+
+.auth-panel--wide {
+    --auth-width: 53rem;
+}
+
+.auth-panel .school-brand {
+    flex-direction: row;
+    gap: .75rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--portal-line);
+    text-align: start;
+}
+
+.auth-panel .school-brand img {
+    width: 3rem;
+    height: 2.65rem;
+    flex-shrink: 0;
+}
+
+.auth-panel .school-brand strong {
+    font-size: 1.2rem;
+    font-weight: 750;
+    letter-spacing: -.025em;
+}
+
+.auth-panel .school-brand small {
+    margin-top: .2rem;
+    font-size: .8125rem;
+}
+
+.welcome-heading {
+    margin-bottom: 1.25rem;
+}
+
+.login-role {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto .75rem;
+    padding: .5rem 1rem;
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.welcome-heading h1 {
+    margin-bottom: .35rem;
+    font-size: clamp(1.55rem, 3.5vw, 1.875rem);
+    font-weight: 750;
+    letter-spacing: -.025em;
+}
+
+.welcome-heading p {
+    margin: 0;
+    color: var(--portal-muted);
+}
+
+.auth-panel .form-label {
+    margin-bottom: .4rem;
+    font-weight: 650;
+}
+
+.login-input {
+    display: flex;
+    align-items: center;
+    min-height: 2.875rem;
+    padding-inline: .75rem .25rem;
+    border: 1px solid #b9cadb;
+    border-radius: var(--portal-control-radius);
+    background: #fff;
+}
+
+.login-input:focus-within {
+    border-color: var(--portal-action-blue);
+    box-shadow: 0 0 0 3px #1167b724;
+}
+
+.login-input input {
+    width: 100%;
+    min-width: 0;
+    padding: .625rem 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1rem;
+}
+
+.login-input input::placeholder {
+    color: #657b91;
+}
+
+.password-toggle {
+    display: grid;
+    flex: 0 0 2.5rem;
+    min-height: 2.5rem;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #345979;
+}
+
+.password-toggle:hover,
+.password-toggle[aria-pressed="true"] {
+    background-color: #edf5fc;
+}
+
+.login-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-block: .875rem 1rem;
+    font-size: .875rem;
+}
+
+.login-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+}
+
+.login-options .form-check-input {
+    margin-top: 0;
+}
+
+.login-submit {
+    width: 100%;
+    min-height: 2.875rem;
+}
+
+.login-help {
+    margin: .875rem 0 0;
+    color: var(--portal-muted);
+    font-size: .8125rem;
+}
+
+.auth-school {
+    padding-top: .875rem;
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--portal-line);
+    color: var(--portal-muted);
+    font-size: .8125rem;
+}
+
+.welcome-privacy {
+    margin-top: .875rem;
+    color: #395a76;
+    font-size: .8125rem;
+    text-underline-offset: .15em;
+}
+
+.welcome-logout {
+    position: absolute;
+    inset: .875rem .875rem auto auto;
+}
+
+.welcome-logout + .welcome-main {
+    padding-top: 4.5rem;
+}
+
+.welcome-body :is(a, button):focus-visible {
+    outline: 3px solid var(--portal-action-blue);
+    outline-offset: 3px;
+}
+
+.account-form > h1 {
+    margin-bottom: .75rem;
+    font-size: 1.625rem;
+    font-weight: 750;
+}
+
+.account-form > p {
+    color: var(--portal-muted);
+    font-size: .9375rem;
+}
+
+.account-form .form-control {
+    min-height: 2.875rem;
+    border: 1px solid #b9cadb;
+    border-radius: var(--portal-control-radius);
+}
+
+.account-form .btn-orange {
+    min-height: 2.875rem;
+}

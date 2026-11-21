@@ -1,0 +1,11 @@
+@extends(auth()->user()->activeRole()===\App\Enums\RoleName::Guardian ? 'layouts.guardian':(auth()->user()->activeRole()===\App\Enums\RoleName::Tutor ? 'layouts.advisor':'layouts.app'))
+@section('title','Comunicaciones y citaciones')
+@section('content')
+<x-back-link/>
+<div class="advisor-page-heading"><div><h1>Comunicaciones y citaciones</h1><p class="portal-subtitle">{{ $guardian ? 'Lee los mensajes del colegio y confirma tus próximas citas.':'Mantén una comunicación cercana con las familias de tus secciones.' }}</p></div>@unless($guardian)<a class="btn btn-orange" href="{{ route('communications.create') }}"><x-icon name="calendar-week"/>Nueva comunicación</a>@endunless</div>
+<div class="courses-grid">@forelse($rows as $row)@php($communication=$guardian ? $row->communication:$row)<article class="portal-panel advisor-communication-card"><div class="portal-panel__heading"><span class="advisor-task-icon"><x-icon :name="$communication->type==='appointment' ? 'calendar-week':'envelope'"/></span><div><h2>{{ $communication->title }}</h2><p>{{ $communication->type==='appointment' ? 'Citación individual':'Comunicado' }}</p></div></div>
+@if($guardian)<p class="tutor-name">{{ $row->student->full_name }}</p>@endif
+@if($communication->scheduled_at)<p class="soft-note"><x-icon name="clock"/>{{ $communication->scheduled_at->format('d/m/Y H:i') }} · {{ $communication->location }}</p>@endif
+<div class="advisor-communication-meta"><span>Enviada el {{ $communication->created_at->format('d/m/Y') }}</span>@if($guardian)<span class="status-pill {{ $row->read_at ? 'status-pill--success':'' }}">{{ $row->read_at ? 'Lectura confirmada':'Pendiente de lectura' }}</span>@else<span>{{ $communication->recipients_count }} destinatarios</span>@endif</div>
+<a class="btn btn-outline-primary" href="{{ $guardian ? route('communications.show',$row):route('communications.receipts',$communication) }}">{{ $guardian ? 'Leer y responder':'Consultar lecturas y respuestas' }}<x-icon name="arrow-right"/></a></article>@empty<div class="empty-state"><x-icon name="calendar-week"/><h2>Sin comunicaciones por ahora</h2><p class="mb-0">{{ $guardian ? 'Los mensajes del colegio aparecerán aquí.':'Crea una citación individual o envía un comunicado a tu sección.' }}</p></div>@endforelse</div><div class="mt-3">{{ $rows->links() }}</div>
+@endsection

@@ -1,0 +1,5 @@
+@extends('layouts.guardian')
+@section('title','Boleta informativa '.$year->year)
+@section('content')
+<a class="back-link" href="{{ route('portal.reports',$child) }}"><x-icon name="arrow-left"/>Volver a boletas</a><h1>Boleta informativa {{ $year->year }}</h1><div class="mt-3"><x-child-banner :child="$child" :enrollment="$enrollment"/></div><section class="portal-panel"><div class="panel-title-row"><h2>Niveles de logro publicados</h2><a class="btn btn-orange" href="{{ route('portal.report.pdf',[$child,$year]) }}"><x-icon name="download"/>PDF</a></div><div class="table-responsive"><table class="portal-table"><thead><tr><th>Curso</th><th>Período</th><th>Logro</th></tr></thead><tbody>@forelse($results as $result)<tr><td>{{ $result->offering->course->name }}</td><td>{{ $result->period->name }}</td><td><span class="achievement">{{ $result->achievement }}</span></td></tr>@empty<tr><td colspan="3">Todavía no hay resultados publicados para este año.</td></tr>@endforelse</tbody></table></div><p class="print-note">AD: destacado · A: esperado · B: en proceso · C: en inicio. No reemplaza SIAGIE ni las libretas oficiales.</p></section>
+@endsection

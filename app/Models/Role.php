@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use App\Enums\RoleName;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class Role extends Model
+{
+    protected $fillable = ['name', 'label'];
+
+    protected function casts(): array
+    {
+        return ['name' => RoleName::class];
+    }
+
+    public function permissions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+}

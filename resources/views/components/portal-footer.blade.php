@@ -1,0 +1,1 @@
+<footer class="portal-footer"><span></span><p><img src="{{ asset('brand/mariscalito.svg') }}" width="26" height="23" alt=""> {{ config('school.name') }}</p><span></span><a href="{{ route('privacy.policy') }}">Privacidad y consentimiento</a></footer>

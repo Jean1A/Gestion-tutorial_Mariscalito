@@ -1,0 +1,3 @@
+@props(['name'=>'book'])
+@php($safeName=in_array($name,['house-door','book','file-earmark-text','people','bell','box-arrow-right','list','person','lock','eye','eye-slash','arrow-left','arrow-right','chevron-right','telephone','whatsapp','envelope','calendar-week','bar-chart','calculator','globe','mortarboard','chat-dots','upload','download','check-circle','clock','info-circle','person-x','check-lg','x-lg','paperclip','flask','palette','music-note','activity','arrow-repeat'],true) ? $name:'book')
+<span {{ $attributes->class(['bi-icon']) }} style="--icon:url('{{ asset('icons/'.$safeName.'.svg') }}')" aria-hidden="true"></span>

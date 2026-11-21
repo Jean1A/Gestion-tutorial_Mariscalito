@@ -1,0 +1,73 @@
+.portal-notice {
+    --notice-fill: #f1f7fc;
+    --notice-border: #cfe0ef;
+    --notice-text: #28465e;
+    --notice-accent: #185888;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: .75rem;
+    margin-bottom: 1rem;
+    padding: .875rem 1rem;
+    border: 1px solid var(--notice-border);
+    border-radius: 6px 16px 16px;
+    background-color: var(--notice-fill);
+    color: var(--notice-text);
+    font-size: .9375rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.portal-notice--error {
+    --notice-fill: #fff0f1;
+    --notice-border: #f2c9ce;
+    --notice-text: #792a36;
+    --notice-accent: #b72b3e;
+}
+
+.portal-notice--success {
+    --notice-fill: #edf8f1;
+    --notice-border: #c7e6d3;
+    --notice-text: #21553b;
+    --notice-accent: #29714d;
+}
+
+.portal-notice--warning {
+    --notice-fill: #fff7e9;
+    --notice-border: #efd9aa;
+    --notice-text: #654715;
+    --notice-accent: #865b19;
+}
+
+.portal-notice__symbol {
+    margin-top: .125rem;
+    color: var(--notice-accent);
+    font-size: 1.25rem;
+}
+
+.portal-notice__symbol--filled {
+    display: grid;
+    width: 1.25rem;
+    height: 1.25rem;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--notice-accent);
+    color: #fff;
+    font-size: .875rem;
+    font-weight: 750;
+    line-height: 1;
+}
+
+.portal-notice__title {
+    display: block;
+    margin-bottom: .15rem;
+    font-weight: 700;
+}
+
+.portal-notice__body > :last-child {
+    margin-bottom: 0;
+}
+
+.portal-notice__body > ul {
+    padding-inline-start: 1.2rem;
+}

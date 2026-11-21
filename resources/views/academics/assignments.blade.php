@@ -1,0 +1,14 @@
+@extends('layouts.app')
+@section('title','Vínculos y asignaciones')
+@section('content')
+<x-back-link/>
+<h1 class="h3">Vínculos y asignaciones</h1><p>Usa el DNI propio de la persona. El administrador debe comprobar su identidad y autorización antes de vincular a un estudiante.</p>
+@foreach(['guardian'=>'Apoderado y estudiante','tutor'=>'Tutor y sección','assistant'=>'Auxiliar y grado'] as $type=>$label)
+<div class="card mb-3"><div class="card-body"><h2 class="h5">{{ $label }}</h2><form method="post" action="{{ route('assignments.save') }}" class="row g-3">@csrf<input type="hidden" name="type" value="{{ $type }}">
+<div class="col-md-4"><label class="form-label" for="user-{{ $type }}">DNI del {{ $type==='guardian' ? 'apoderado' : ($type==='tutor' ? 'tutor':'auxiliar') }}</label><input id="user-{{ $type }}" name="user_dni" class="form-control" maxlength="8" inputmode="numeric" required></div>
+@if($type==='guardian')<div class="col-md-4"><label class="form-label" for="student-dni">DNI del estudiante</label><input id="student-dni" name="student_dni" class="form-control" maxlength="8" inputmode="numeric" required></div><div class="col-md-4"><label class="form-label" for="relationship">Parentesco / representación</label><input id="relationship" name="relationship" class="form-control" maxlength="60" required></div><div class="col-12"><label><input name="identity_verified" type="checkbox" value="1"> Verifiqué identidad y autorización de representación.</label></div>
+@elseif($type==='tutor')<div class="col-md-8"><label class="form-label" for="assigned-section">Sección</label><select id="assigned-section" name="section_id" class="form-select" required>@foreach($sections as $section)<option value="{{ $section->id }}">{{ $section->schoolYear->year }} · {{ $section->grade->educationLevel->name }} {{ $section->grade->name }} {{ $section->name }}</option>@endforeach</select></div>
+@else<div class="col-md-4"><label class="form-label" for="assigned-year">Año</label><select id="assigned-year" name="school_year_id" class="form-select">@foreach($years as $year)<option value="{{ $year->id }}">{{ $year->year }}</option>@endforeach</select></div><div class="col-md-4"><label class="form-label" for="assigned-grade">Grado</label><select id="assigned-grade" name="grade_id" class="form-select">@foreach($grades as $grade)<option value="{{ $grade->id }}">{{ $grade->educationLevel->name }} · {{ $grade->name }}</option>@endforeach</select></div>@endif
+<div class="col-md-4"><label class="form-label" for="active-{{ $type }}">Estado</label><select id="active-{{ $type }}" class="form-select" name="is_active"><option value="1">Activo</option><option value="0">Desactivar vínculo existente</option></select></div><div class="col-12"><button class="btn btn-primary">Guardar {{ $label }}</button></div></form></div></div>
+@endforeach
+@endsection
